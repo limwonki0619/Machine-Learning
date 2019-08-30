@@ -9,7 +9,7 @@ library(stringr)
 data['MON'] <- str_sub(data$YM, 5, 6)
 head(data)
 
-data1 <- data[,-c(1:3)]
+data1 <- data[,-c(1:2)]
 data1$MON <- as.numeric(data1$MON)
 head(data1)
 
@@ -25,7 +25,21 @@ summary(model)
 install.packages('leaps')
 library(leaps)
 
-leaps <- regsubsets(QTY~., data=data1, nbest=4)
+leaps <- regsubsets(QTY~., data=data1, nbest=3)
 plot(leaps, scale = 'bic')
 plot(leaps, scale = 'Cp')
 plot(leaps, scale = 'adjr2')
+
+
+# 모델 선택하기 ---------------------------------
+bic_model <- lm(QTY~ PRICE + SALEDAY + RAIN_DAY + MON, data=data1)
+summary(bic_model)
+
+Cp_model <- lm(QTY ~ ITEM_CNT + PRICE + MAXTEMP + SALEDAY + RAIN_DAY + MON, data=data1)
+summary(Cp_model)
+
+adjr2_model <- lm(QTY ~., data=data1)
+summary(adjr2_model)
+
+
+
