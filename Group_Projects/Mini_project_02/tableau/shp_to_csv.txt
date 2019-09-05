@@ -1,0 +1,7 @@
+1. Shp 파일 다운로드 
+
+2. https://gallery.alteryx.com/#!app/Tableau-Shapefile-to-Polygon-Converter/5296f89120aaf905b8e7fb48
+
+3.  Generalize Polygon (Advanced) click
+
+4. 
